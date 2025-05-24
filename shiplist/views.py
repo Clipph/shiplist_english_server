@@ -33,3 +33,6 @@ def new_ships_view(request):
 def home(request): # show only sailing ships
     sailing_ships = Ship.objects.filter(status=2).order_by('-ship_no') 
     return render(request, 'shiplist/index.html', {'ships': sailing_ships})
+
+def about(request):
+    return render(request, 'shiplist/about.html')
