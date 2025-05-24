@@ -125,6 +125,8 @@ body {
 table {
   border-collapse: collapse;
   width: 100%;
+  border-left: 2px solid #ccc;
+  border-right: 2px solid #ccc;
 }
 
 thead th {
