@@ -81,3 +81,31 @@ body {
   font-family: "Nunito", sans-serif;
   font-weight: 700; /* bold */
 }
+
+.status-badge {
+  padding: 4px 8px;
+  border-radius: 12px;
+  color: white;
+  font-weight: bold;
+  display: inline-block;
+  font-size: 0.9rem;
+  min-width: 70px;
+  text-align: center;
+}
+
+.status-pending {
+  background-color: #f1c40f; /* yellow */
+  color: black; /* better contrast on yellow */
+}
+
+.status-untracked {
+  background-color: #95a5a6; /* gray */
+}
+
+.status-sailing {
+  background-color: #27ae60; /* green */
+}
+
+.status-sunken {
+  background-color: #e74c3c; /* red */
+}

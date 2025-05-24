@@ -7,9 +7,9 @@ class ShipViewSet(viewsets.ModelViewSet):
     queryset = Ship.objects.all()
     serializer_class = ShipSerializer
 
-def ship_list_view(request):
-    ships = Ship.objects.all()
-    return render(request, 'shiplist/index.html', {'ships': ships})
+def ship_logs_view(request):
+    ship_logs = Ship.objects.all()
+    return render(request, 'shiplist/ship_logs.html', {'ships': ship_logs})
 
 def pending_ships_view(request):
         pending_ships = Ship.objects.filter(status=0)
