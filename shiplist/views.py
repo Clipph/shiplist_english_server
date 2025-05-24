@@ -8,7 +8,7 @@ class ShipViewSet(viewsets.ModelViewSet):
     serializer_class = ShipSerializer
 
 def ship_logs_view(request):
-    ship_logs = Ship.objects.all()
+    ship_logs = Ship.objects.all().order_by('-id')
     return render(request, 'shiplist/ship_logs.html', {'ships': ship_logs})
 
 def pending_ships_view(request):
@@ -24,5 +24,5 @@ def sunken_ships_view(request):
     return render(request, 'shiplist/sunken_ships.html', {'ships': sunken_ships})
 
 def home(request): # show only sailing ships
-    sailing_ships = Ship.objects.filter(status=2) 
+    sailing_ships = Ship.objects.filter(status=2).order_by('-ship_no') 
     return render(request, 'shiplist/index.html', {'ships': sailing_ships})

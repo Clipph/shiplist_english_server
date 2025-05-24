@@ -109,3 +109,36 @@ body {
 .status-sunken {
   background-color: #e74c3c; /* red */
 }
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 1rem;
+  font-family: "Nunito", sans-serif;
+}
+
+.table-container {
+  max-height: 500px; /* adjust height */
+  overflow-y: auto;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+thead th {
+  position: sticky;
+  top: 0;
+  background-color: #87ceeb; /* pastel blue */
+  color: white;
+  padding: 8px;
+  text-align: center; /* center headers */
+  z-index: 1;
+}
+
+tbody td {
+  padding: 8px;
+  border-top: 1px solid #ddd;
+  text-align: center; /* center table data */
+}
