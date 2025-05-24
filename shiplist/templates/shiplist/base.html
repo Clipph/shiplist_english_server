@@ -1,0 +1,22 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>{% block title %}Shipping List{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'shiplist/style.css' %}" />
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet" />
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav>
+        <a href="{% url 'home' %}">Home</a> |
+        <a href="{% url 'ship_logs' %}">Ship Logs</a>
+    </nav>
+
+    <!-- Page content goes here -->
+    <div class="container">{% block content %} {% endblock %}</div>
+</body>
+
+</html>

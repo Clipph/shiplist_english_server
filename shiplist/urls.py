@@ -6,7 +6,8 @@ router = DefaultRouter()
 router.register(r'ships', ShipViewSet)
 
 urlpatterns = [
-    path('', home, name='home'),  # shows homepage at /
+    path('', home, name='home'),
+    path('home/', home, name='home'),
     path('ship_logs/', ship_logs_view,  name='ship_logs'),
-    path('api/', include(router.urls)), # API at /api/ships/
+    path('api/', include(router.urls)),
 ]
