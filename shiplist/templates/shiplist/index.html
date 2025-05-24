@@ -4,26 +4,25 @@
   <head>
     <title>Ship List</title>
     <link rel="stylesheet" href="{% static 'shiplist/style.css' %}" />
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
   </head>
   <body>
     <div class="container">
-      <h1>💙 Ship List 💙</h1>
+      <h1>🩵 Current Ship List 🩵</h1>
       <table>
   <thead>
     <tr>
       <th>Ship No.</th>
       <th>Ship</th>
-      <th>Status</th>
       <th>Shipped Date</th>
-      <th>Remarks</th> <!-- You can keep this empty for spacing or remove if you want -->
+      <th></th> <!-- You can keep this empty for spacing or remove if you want -->
     </tr>
   </thead>
   <tbody>
     {% for ship in ships %}
     <tr>
       <td>{{ ship.ship_no }}</td>
-      <td>{{ ship.half }} x {{ ship.half_other }}</td>
-      <td>{{ ship.get_status_display }}</td>
+      <td>{{ ship.half }} &nbsp;<span style="color:gray; font-weight:bold;">x</span>&nbsp; {{ ship.half_other }}</td>
       <td>{{ ship.shipped_date|date:"F j, Y" }}</td>
       <td style="width: 40px; text-align: center;">
         {% if ship.remarks %}
@@ -46,6 +45,7 @@
     <p id="modal-text"></p>
   </div>
 </div>
+
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
