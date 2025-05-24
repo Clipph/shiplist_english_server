@@ -36,3 +36,6 @@ def home(request): # show only sailing ships
 
 def about(request):
     return render(request, 'shiplist/about.html')
+
+def rules(request):
+    return render(request, 'shiplist/rules.html')

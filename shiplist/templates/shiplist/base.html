@@ -17,6 +17,8 @@
                 class="{% if request.resolver_match.url_name == 'home' %}active{% endif %}">Home</a>
             <a href="{% url 'ship_logs' %}"
                 class="{% if request.resolver_match.url_name == 'ship_logs' %}active{% endif %}">Ship Logs</a>
+            <a href="{% url 'rules' %}"
+                class="{% if request.resolver_match.url_name == 'rules' %}active{% endif %}">Rules</a>
             <a href="{% url 'about' %}"
                 class="{% if request.resolver_match.url_name == 'about' %}active{% endif %}">About Us</a>
         </nav>

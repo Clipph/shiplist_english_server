@@ -251,3 +251,37 @@ html, body {
   font-size: 1rem;
 }
 
+.rules-container {
+  font-family: 'Nunito', sans-serif;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  height: 80vh;           /* fixed height to limit size */
+  overflow-y: auto;       /* enable vertical scrolling */
+  text-align: center;     /* center all text */
+}
+
+.rules-container h1 {
+  font-weight: 900;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.rules-container .rule h2 {
+  font-weight: 800;
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
+  font-size: 1.5rem;
+  text-align: left;
+}
+
+.rules-container .rule p {
+  font-weight: 600;
+  text-align: left;
+  font-size: 1rem;
+  line-height: 1.5;
+  margin: 0 auto 1.5rem auto;
+}
