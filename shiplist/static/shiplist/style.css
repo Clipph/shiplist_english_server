@@ -17,6 +17,7 @@ body {
 h1 {
   text-align: center;
   color: #3399cc;
+  font-weight: 900;
 }
 
 table {
@@ -79,7 +80,7 @@ table tr:nth-child(even) {
 
 body {
   font-family: "Nunito", sans-serif;
-  font-weight: 700; /* bold */
+  font-weight: 800; /* bold */
 }
 
 .status-badge {
@@ -143,4 +144,81 @@ tbody td {
   padding: 8px;
   border-top: 1px solid #ddd;
   text-align: center; /* center table data */
+}
+
+.page-wrapper {
+  display: flex;
+  height: 100vh;
+  font-family: 'Nunito', sans-serif;
+  color: #222;
+}
+
+.sidebar {
+  width: 220px;
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative; /* for pseudo-element positioning */
+  height: auto; /* remove full height */
+  max-height: 80vh; /* or any shorter height you want */
+  overflow: hidden; /* prevent scrolling */
+}
+
+/* Instead of border-right, use a pseudo-element */
+.sidebar::before {
+  content: "";
+  position: absolute;
+  top: 40px;          /* start below top padding */
+  bottom: 40px;       /* end above bottom padding */
+  right: 0;
+  width: 1px;
+  background-color: #FFF; /* same as old border */
+}
+
+
+/* Site title */
+.site-title {
+  font-size: 2rem;
+  font-weight: 900;
+  margin-bottom: 48px;
+  user-select: none;
+}
+
+.sidebar a {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: #999;       /* lighter gray for unselected */
+  text-decoration: none;
+  margin-bottom: 32px;
+  padding-bottom: 4px;
+  width: 100%;
+  transition: color 0.3s ease, font-weight 0.3s ease;
+}
+
+.sidebar a:hover {
+  color: #555;       /* a bit darker gray on hover */
+  font-weight: 800;
+}
+
+.sidebar a.active {
+  color: #000;       /* black for selected */
+  font-weight: 900;
+}
+
+
+
+/* Content */
+.content {
+  flex-grow: 1;
+  padding: 40px 60px;
+  overflow-y: auto;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  padding-left: 10px;
+  overflow-x: hidden; /* prevent horizontal scroll */
 }
