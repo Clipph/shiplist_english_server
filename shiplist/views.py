@@ -2,6 +2,8 @@ from rest_framework import viewsets
 from .models import Ship
 from .serializers import ShipSerializer
 from django.shortcuts import render
+from django.utils import timezone
+from datetime import timedelta
 
 class ShipViewSet(viewsets.ModelViewSet):
     queryset = Ship.objects.all()
@@ -22,6 +24,11 @@ def untracked_ships_view(request):
 def sunken_ships_view(request):
     sunken_ships = Ship.objects.filter(status=3)
     return render(request, 'shiplist/sunken_ships.html', {'ships': sunken_ships})
+
+def new_ships_view(request):
+    seven_days_ago = timezone.now() - timedelta(days=7)
+    new_ships = Ship.objects.filter(shipped_date__gte=seven_days_ago)
+    return render(request, 'shiplist/new_ships.html', {'ships': new_ships})
 
 def home(request): # show only sailing ships
     sailing_ships = Ship.objects.filter(status=2).order_by('-ship_no') 
