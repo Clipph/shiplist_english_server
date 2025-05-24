@@ -16,7 +16,7 @@ class Ship(models.Model):
     status = models.IntegerField(choices=STATUS_CHOICES, default=0)
     
     shipped_date = models.DateTimeField(auto_now_add=True)
-    remarks = models.CharField(max_length=255)
+    remarks = models.CharField(max_length=255, blank=True)
 
     def __str__(self):
         return f"{self.half} x {self.half_other}"

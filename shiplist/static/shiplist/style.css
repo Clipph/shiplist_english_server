@@ -1,0 +1,42 @@
+body {
+  background: #cceeff;
+  font-family: "Segoe UI", sans-serif;
+  margin: 0;
+  padding: 20px;
+}
+
+.container {
+  max-width: 960px;
+  margin: auto;
+  background: #ffffffcc;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+  color: #3399cc;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+table th,
+table td {
+  padding: 12px;
+  text-align: center;
+  border-bottom: 1px solid #ccc;
+}
+
+table th {
+  background-color: #b3e0ff;
+  color: #004466;
+}
+
+table tr:nth-child(even) {
+  background-color: #e6f7ff;
+}

@@ -27,6 +27,13 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+# STATIC SETTINGS
+STATIC_URL = '/static/'
+
+STATICFILES_DIRS = [
+    BASE_DIR / 'shiplist' / 'static',  # 👈 This one includes your custom CSS
+]
+
 
 # Application definition
 
@@ -57,7 +64,7 @@ ROOT_URLCONF = 'shiplist_english_server.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'shiplist' / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

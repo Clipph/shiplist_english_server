@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Ship List</title>
+    <link rel="stylesheet" href="{% static 'shiplist/style.css' %}" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>💙 Ship List 💙</h1>
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Ship No.</th>
+            <th>Half</th>
+            <th>Half Other</th>
+            <th>Status</th>
+            <th>Shipped Date</th>
+            <th>Remarks</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for ship in ships %}
+          <tr>
+            <td>{{ ship.id }}</td>
+            <td>{{ ship.ship_no }}</td>
+            <td>{{ ship.half }}</td>
+            <td>{{ ship.half_other }}</td>
+            <td>{{ ship.get_status_display }}</td>
+            <td>{{ ship.shipped_date }}</td>
+            <td>{{ ship.remarks }}</td>
+          </tr>
+          {% empty %}
+          <tr>
+            <td colspan="7">No ships found.</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>
