@@ -9,14 +9,15 @@
 </head>
 
 <body>
-    <!-- Navigation -->
     <nav>
         <a href="{% url 'home' %}">Home</a> |
         <a href="{% url 'ship_logs' %}">Ship Logs</a>
     </nav>
 
-    <!-- Page content goes here -->
-    <div class="container">{% block content %} {% endblock %}</div>
+    {% block content %}
+    <!-- Child templates handle structure like .container -->
+    {% endblock %}
 </body>
+
 
 </html>

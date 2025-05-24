@@ -1,39 +1,40 @@
 {% extends "shiplist/base.html" %} {% block title %}Current Ships{% endblock %}
 {% block content %}
-<h1>🩵 Current Ship List 🩵</h1>
-<div class="table-container">
-    <table>
-        <thead>
-            <tr>
-                <th>Ship No.</th>
-                <th>Ship</th>
-                <th>Shipped Date</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for ship in ships %}
-            <tr>
-                <td>{{ ship.ship_no }}</td>
-                <td>
-                    {{ ship.half }} &nbsp;<span style="color: gray; font-weight: bold">x</span>&nbsp; {{ ship.half_other
-                    }}
-                </td>
-                <td>{{ ship.shipped_date|date:"F j, Y" }}</td>
-                <td style="width: 40px; text-align: center">
-                    {% if ship.remarks %}
-                    <!-- Note button -->
-                    <button class="note-btn" data-remarks="{{ ship.remarks|escapejs }}">
-                        📝
-                    </button>
-                    {% else %}
-                    <!-- Keep space reserved but empty -->
-                    &nbsp; {% endif %}
-                </td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+<div class="container">
+    <h1>🩵 Current Ship List 🩵</h1>
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Ship No.</th>
+                    <th>Ship</th>
+                    <th>Shipped Date</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for ship in ships %}
+                <tr>
+                    <td>{{ ship.ship_no }}</td>
+                    <td>
+                        {{ ship.half }} <span style="color: gray; font-weight: bold">x</span> {{ ship.half_other }}
+                    </td>
+                    <td>{{ ship.shipped_date|date:"F j, Y" }}</td>
+                    <td style="width: 40px; text-align: center">
+                        {% if ship.remarks %}
+                        <!-- Note button -->
+                        <button class="note-btn" data-remarks="{{ ship.remarks|escapejs }}">
+                            📝
+                        </button>
+                        {% else %}
+                        <!-- Keep space reserved but empty -->
+                        &nbsp; {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 </div>
 
 <!-- Modal container -->
