@@ -1,5 +1,26 @@
 from django.contrib import admin
 from .models import Ship, Rule
+from django.contrib.auth.admin import UserAdmin
+from django.contrib.auth.models import User
+
+class CustomUserAdmin(UserAdmin):
+    # Hide first_name and last_name in edit view
+    fieldsets = (
+        (None, {'fields': ('username', 'password')}),
+        ('Permissions', {'fields': ('is_active', 'is_staff', 'groups')}),
+    )
+
+    # Hide in add user form too
+    add_fieldsets = (
+        (None, {
+            'classes': ('wide',),
+            'fields': ('username', 'password1', 'password2'),
+        }),
+    )
+
+admin.site.unregister(User)
+admin.site.register(User, CustomUserAdmin)
+
 
 @admin.register(Ship)
 class ShipAdmin(admin.ModelAdmin):
