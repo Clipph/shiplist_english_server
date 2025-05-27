@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-r=5qmvtynp8t#iu(zo5frlemfk6rml37#7i4&r400nu)*&($du
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['ShiplistEnglishServer.pythonanywhere.com']
+ALLOWED_HOSTS = ['ShiplistEnglishServer.pythonanywhere.com', '127.0.0.1']
 
 # STATIC SETTINGS
 STATIC_URL = '/static/'
