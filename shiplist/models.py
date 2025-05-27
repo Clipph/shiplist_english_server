@@ -26,3 +26,4 @@ class Ship(models.Model):
 class Rule(models.Model):
     article_number = models.FloatField()
     rule_content = models.TextField()
+    rule_year = models.IntegerField(default=2020)
