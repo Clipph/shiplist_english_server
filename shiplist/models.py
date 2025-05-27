@@ -10,11 +10,13 @@ STATUS_CHOICES = (
 class Ship(models.Model):
     ship_no = models.IntegerField()
     half = models.CharField(max_length=50)
+    half_username = models.CharField(max_length=50, blank=True)
     half_other = models.CharField(max_length=50)
-    
+    half_other_username = models.CharField(max_length=50, blank=True)
+
     # 0 = Pending, 1 = Untracked, 2 = Sailing, 3 = Sunken
     status = models.IntegerField(choices=STATUS_CHOICES, default=0)
-    
+
     shipped_date = models.DateTimeField(auto_now_add=True)
     remarks = models.CharField(max_length=255, blank=True)
 
