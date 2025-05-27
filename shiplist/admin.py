@@ -9,6 +9,6 @@ class ShipAdmin(admin.ModelAdmin):
 
 @admin.register(Rule)
 class RuleAdmin(admin.ModelAdmin):
-    list_display = ('article_number', 'rule_content', 'rule_year')
-    search_fields = ('article_number', 'rule_content', 'rule_year')
+    list_display = ('article_number', 'rule_content')
+    search_fields = ('article_number', 'rule_content')
     ordering = ('article_number',)
