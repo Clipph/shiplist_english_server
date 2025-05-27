@@ -22,3 +22,7 @@ class Ship(models.Model):
 
     def __str__(self):
         return f"{self.half} x {self.half_other}"
+    
+class Rule(models.Model):
+    article_number = models.FloatField()
+    rule_content = models.TextField()

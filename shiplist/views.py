@@ -1,5 +1,5 @@
 from rest_framework import viewsets
-from .models import Ship
+from .models import Ship, Rule
 from .serializers import ShipSerializer
 from django.shortcuts import render
 from django.utils import timezone
@@ -38,4 +38,5 @@ def about(request):
     return render(request, 'shiplist/about.html')
 
 def rules(request):
-    return render(request, 'shiplist/rules.html')
+    rules = Rule.objects.all().order_by('article_number')
+    return render(request, 'shiplist/rules.html', {'rules': rules})
