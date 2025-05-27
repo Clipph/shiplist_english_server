@@ -1,3 +1,5 @@
 db.sqlite3
 **/__pycache__/
 *.pyc
+staticfiles/
+shiplist_english_server/settings.py
