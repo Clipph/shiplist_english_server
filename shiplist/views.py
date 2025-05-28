@@ -4,6 +4,7 @@ from .serializers import ShipSerializer
 from django.shortcuts import render
 from django.utils import timezone
 from datetime import timedelta
+from django.utils.timezone import now
 
 class ShipViewSet(viewsets.ModelViewSet):
     queryset = Ship.objects.all()
@@ -30,9 +31,13 @@ def new_ships_view(request):
     new_ships = Ship.objects.filter(shipped_date__gte=seven_days_ago)
     return render(request, 'shiplist/new_ships.html', {'ships': new_ships})
 
-def home(request): # show only sailing ships
-    sailing_ships = Ship.objects.filter(status=2).order_by('-ship_no') 
-    return render(request, 'shiplist/index.html', {'ships': sailing_ships})
+def home(request):
+    sailing_ships = Ship.objects.filter(status=2).order_by('-ship_no')
+    current_time = now()  # Django timezone-aware server time
+    return render(request, 'shiplist/index.html', {
+        'ships': sailing_ships,
+        'current_time': current_time,
+    })
 
 def about(request):
     return render(request, 'shiplist/about.html')

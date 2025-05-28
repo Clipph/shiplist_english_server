@@ -37,6 +37,32 @@
     </div>
 </div>
 
+<!-- Copy Ships Button -->
+<div style="display: flex; justify-content: flex-end; margin-top: 20px;">
+    <button onclick="copyShips()"
+        style="padding: 8px 14px; background-color: #444; color: white; border: none; border-radius: 6px; cursor: pointer;">
+        📋 Copy All Ships
+    </button>
+</div>
+
+<!-- Hidden textarea to hold formatted ship data -->
+<textarea id="shipText" style="opacity: 0; position: absolute; left: -9999px;"></textarea>
+
+<script>
+    function copyShips() {
+        const shipData = `{% for ship in ships reversed %}{{ ship.ship_no }}. {{ ship.half }} x {{ ship.half_other }}
+{% endfor %}`.trim();
+
+        const currentTime = "{{ current_time|date:'F j, Y, g:i A' }}";  // Server time (UTC or your Django TIME_ZONE)
+        const websiteURL = window.location.origin;
+        const textArea = document.getElementById("shipText");
+        textArea.value = `Current ships as of ${currentTime} - UTC 0\n\n\`\`\`\n${shipData}\n\`\`\`\n\nRetrieved from: \`${websiteURL}\``;
+        textArea.select();
+        document.execCommand("copy");
+        alert("Ships copied! You may now paste this to Discord wkwkwk");
+    }
+</script>
+
 <!-- Modal container -->
 <div id="remarks-modal" class="modal" style="display: none">
     <div class="modal-content">
