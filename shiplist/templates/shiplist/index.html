@@ -62,9 +62,34 @@
         textArea.value = `## Current ships as of ${currentTime} - UTC 0\n\`\`\`\n${shipData}\n\`\`\`\nRetrieved from: \`${websiteURL}\``;
         textArea.select();
         document.execCommand("copy");
-        alert("Ships copied! You may now paste this to Discord wkwkwk");
+
+        // Show the custom notification
+        const customAlert = document.getElementById("customAlert");
+        customAlert.style.display = "block";
+
+        // Hide it after 3 seconds
+        setTimeout(() => {
+            customAlert.style.display = "none";
+        }, 3000);
     }
 </script>
+
+<div id="customAlert" style="
+    display: none;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    z-index: 1000;
+    font-family: sans-serif;
+">
+    Ships copied! You may now paste this to Discord wkwkwk! 😅
+</div>
+
 
 <!-- Modal container -->
 <div id="remarks-modal" class="modal" style="display: none">
