@@ -9,6 +9,7 @@
                     <th>Ship No.</th>
                     <th>Ship</th>
                     <th>Shipped Date</th>
+                    <th>Updated By</th>
                     <th></th>
                 </tr>
             </thead>
@@ -20,6 +21,7 @@
                         {{ ship.half }} <span style="color: gray; font-weight: bold">x</span> {{ ship.half_other }}
                     </td>
                     <td>{{ ship.shipped_date|date:"F j, Y" }}</td>
+                    <td>{{ ship.updated_by }}</td>
                     <td style="width: 40px; text-align: center">
                         {% if ship.remarks %}
                         <!-- Note button -->
@@ -53,7 +55,7 @@
         const shipData = `{% for ship in ships reversed %}{{ ship.ship_no }}. {{ ship.half }} x {{ ship.half_other }}
 {% endfor %}`.trim();
 
-        const currentTime = "{{ current_time|date:'F j, Y, g:i A' }}";  // Server time (UTC or your Django TIME_ZONE)
+        const currentTime = "{{ current_time|date:'F j, Y, g:i A' }}";
         const websiteURL = window.location.origin;
         const textArea = document.getElementById("shipText");
         textArea.value = `## Current ships as of ${currentTime} - UTC 0\n\`\`\`\n${shipData}\n\`\`\`\nRetrieved from: \`${websiteURL}\``;

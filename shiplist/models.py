@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 STATUS_CHOICES = (
     (0, 'Pending'),
@@ -20,9 +21,13 @@ class Ship(models.Model):
     shipped_date = models.DateTimeField(auto_now_add=True)
     remarks = models.CharField(max_length=255, blank=True)
 
+    updated_by = models.ForeignKey(User, null=True, blank=True, on_delete=models.SET_NULL, related_name='ships_updated')
+
     def __str__(self):
         return f"{self.half} x {self.half_other}"
     
 class Rule(models.Model):
     article_number = models.FloatField()
     rule_content = models.TextField()
+
+    updated_by = models.ForeignKey(User, null=True, blank=True, on_delete=models.SET_NULL, related_name='rules_updated')

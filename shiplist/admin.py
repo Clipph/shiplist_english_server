@@ -26,12 +26,25 @@ admin.site.register(User, CustomUserAdmin)
 
 @admin.register(Ship)
 class ShipAdmin(admin.ModelAdmin):
-    list_display = ('id', 'ship_no', 'half', 'half_username', 'half_other', 'half_other_username', 'status', 'shipped_date')
-    list_filter = ('status', 'shipped_date')
+    list_display = ('ship_no', 'half', 'half_username', 'half_other', 'half_other_username', 'status', 'updated_by')
+    list_display_links = ('ship_no', 'half', 'half_other')
+    list_filter = ('status', 'shipped_date', 'updated_by')
     search_fields = ('half', 'half_other', 'remarks', 'ship_no', 'half_username', 'half_other_username')
+    exclude = ('updated_by',)
+
+    def save_model(self, request, obj, form, change):
+        obj.updated_by = request.user
+        super().save_model(request, obj, form, change)
 
 @admin.register(Rule)
 class RuleAdmin(admin.ModelAdmin):
-    list_display = ('article_number', 'rule_content')
+    list_display = ('article_number', 'rule_content', 'updated_by')
+    search_fields = ('article_number', 'rule_content')
+    list_filter = ('updated_by',)
     search_fields = ('article_number', 'rule_content')
     ordering = ('article_number',)
+    exclude = ('updated_by',)
+
+    def save_model(self, request, obj, form, change):
+        obj.updated_by = request.user
+        super().save_model(request, obj, form, change)

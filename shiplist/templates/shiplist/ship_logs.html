@@ -10,6 +10,7 @@
                     <th>Ship</th>
                     <th>Status</th>
                     <th>Shipped Date</th>
+                    <th>Updated By</th>
                     <th></th>
                 </tr>
             </thead>
@@ -35,6 +36,7 @@
                     </td>
 
                     <td>{{ ship.shipped_date|date:"F j, Y" }}</td>
+                    <td>{{ ship.updated_by }}</td>
                     <td style="width: 40px; text-align: center;">
                         {% if ship.remarks %}
                         <!-- Note button -->
