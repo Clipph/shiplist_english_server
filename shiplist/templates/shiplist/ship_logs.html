@@ -30,6 +30,8 @@
                         <span class="status-badge status-sailing">{{ ship.get_status_display }}</span>
                         {% elif ship.status == 3 %}
                         <span class="status-badge status-sunken">{{ ship.get_status_display }}</span>
+                        {% elif ship.status == 4 %}
+                        <span class="status-badge status-untracked">{{ ship.get_status_display }}</span>
                         {% else %}
                         {{ ship.get_status_display }}
                         {% endif %}
