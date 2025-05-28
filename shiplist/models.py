@@ -15,7 +15,7 @@ class Ship(models.Model):
     half_other_username = models.CharField(max_length=50, blank=True)
 
     # 0 = Pending, 1 = Untracked, 2 = Sailing, 3 = Sunken
-    status = models.IntegerField(choices=STATUS_CHOICES, default=0)
+    status = models.IntegerField(choices=STATUS_CHOICES, default=0, help_text="'Pending' is for ships you're not sure about. 'Untracked' is for ghost ships.")
 
     shipped_date = models.DateTimeField(auto_now_add=True)
     remarks = models.CharField(max_length=255, blank=True)
