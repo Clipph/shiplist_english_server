@@ -5,6 +5,8 @@ from django.contrib.auth.models import User
 
 class CustomUserAdmin(UserAdmin):
     # Hide first_name and last_name in edit view
+    list_display = ('username', 'is_active', 'is_staff')
+
     fieldsets = (
         (None, {'fields': ('username', 'password')}),
         ('Permissions', {'fields': ('is_active', 'is_staff', 'groups')}),
