@@ -27,6 +27,7 @@ admin.site.register(User, CustomUserAdmin)
 @admin.register(Ship)
 class ShipAdmin(admin.ModelAdmin):
     list_display = ('ship_no', 'half', 'half_username', 'half_other', 'half_other_username', 'status', 'updated_by')
+    list_editable = ('status',)
     list_display_links = ('ship_no', 'half', 'half_other')
     list_filter = ('status', 'shipped_date', 'updated_by')
     search_fields = ('half', 'half_other', 'remarks', 'ship_no', 'half_username', 'half_other_username')
