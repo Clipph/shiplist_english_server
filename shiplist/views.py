@@ -5,6 +5,7 @@ from django.shortcuts import render
 from django.utils import timezone
 from datetime import timedelta
 from django.utils.timezone import now
+from collections import defaultdict
 
 class ShipViewSet(viewsets.ModelViewSet):
     queryset = Ship.objects.all()
@@ -43,5 +44,13 @@ def about(request):
     return render(request, 'shiplist/about.html')
 
 def rules(request):
-    rules = Rule.objects.all().order_by('article_number')
-    return render(request, 'shiplist/rules.html', {'rules': rules})
+    rules = Rule.objects.all().order_by('section', 'article_number')
+
+    grouped_rules = defaultdict(list)
+    for rule in rules:
+        grouped_rules[rule.get_section_display()].append(rule)
+
+    context = {
+        'grouped_rules': grouped_rules.items(),
+    }
+    return render(request, 'shiplist/rules.html', context)

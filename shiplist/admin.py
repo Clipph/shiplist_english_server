@@ -41,7 +41,7 @@ class ShipAdmin(admin.ModelAdmin):
 class RuleAdmin(admin.ModelAdmin):
     list_display = ('article_number', 'rule_content', 'updated_by')
     search_fields = ('article_number', 'rule_content')
-    list_filter = ('updated_by',)
+    list_filter = ('section','updated_by',)
     search_fields = ('article_number', 'rule_content')
     ordering = ('article_number',)
     exclude = ('updated_by',)

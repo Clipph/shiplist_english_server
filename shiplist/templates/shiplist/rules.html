@@ -1,17 +1,20 @@
 {% extends "shiplist/base.html" %}
-
 {% block title %}Rules{% endblock %}
 
 {% block content %}
 <div class="rules-container">
     <h1>📜 Rules</h1>
 
-    {% for rule in rules %}
-    <div class="rule">
-        <h2>Article {{ rule.article_number }}</h2>
-        <p>{{ rule.rule_content }}</p>
+    {% for section_name, rules_in_section in grouped_rules %}
+    <div class="section-block">
+        <h2>{{ section_name }}</h2>
+        {% for rule in rules_in_section %}
+        <div class="rule">
+            <h3>Article {{ rule.article_number }} - {{ rule.title }}</h3>
+            <p>{{ rule.rule_content }}</p>
+        </div>
+        {% endfor %}
     </div>
     {% endfor %}
-
 </div>
 {% endblock %}

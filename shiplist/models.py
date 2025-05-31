@@ -9,6 +9,12 @@ STATUS_CHOICES = (
     (4, 'Dropped'),
 )
 
+RULES_SECTIONS = (
+    (0, 'CEO Policies'),
+    (1, 'Staff Policies'),
+    (2, 'General Policies'),
+)
+
 class Ship(models.Model):
     ship_no = models.AutoField(primary_key=True)
     half = models.CharField(max_length=50)
@@ -27,7 +33,11 @@ class Ship(models.Model):
         return f"Ship no. {self.ship_no}"
     
 class Rule(models.Model):
+    section = models.IntegerField(choices=RULES_SECTIONS, default=0)
     article_number = models.FloatField()
+    title = models.CharField(max_length=100, blank=True)
     rule_content = models.TextField()
-
     updated_by = models.ForeignKey(User, null=True, blank=True, on_delete=models.SET_NULL, related_name='rules_updated')
+
+    def __str__(self):
+        return f"Article {self.article_number} - {self.title}"
