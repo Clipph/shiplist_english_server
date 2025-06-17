@@ -2,6 +2,7 @@ from django.contrib import admin
 from .models import Ship, Rule
 from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth.models import User
+from .admin_forms import ShipAdminForm
 
 class CustomUserAdmin(UserAdmin):
     # Hide first_name and last_name in edit view
@@ -26,6 +27,8 @@ admin.site.register(User, CustomUserAdmin)
 
 @admin.register(Ship)
 class ShipAdmin(admin.ModelAdmin):
+    form = ShipAdminForm
+
     list_display = ('ship_no', 'half', 'half_username', 'half_other', 'half_other_username', 'status', 'updated_by')
     list_editable = ('status',)
     list_display_links = ('ship_no', 'half', 'half_other')
