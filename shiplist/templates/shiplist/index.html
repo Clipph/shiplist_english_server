@@ -107,7 +107,7 @@
 
         document.querySelectorAll(".note-btn").forEach((button) => {
             button.addEventListener("click", () => {
-                const remarks = button.getAttribute("data-remarks");
+                const remarks = JSON.parse('"' + button.dataset.remarks + '"');
                 modalText.textContent = remarks;
                 modal.style.display = "flex";
             });
