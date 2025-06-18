@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.utils import timezone
 
 STATUS_CHOICES = (
     (0, 'Pending'),
@@ -24,7 +25,7 @@ class Ship(models.Model):
 
     status = models.IntegerField(choices=STATUS_CHOICES, default=0, help_text="'Pending' is for ships you're not sure about. 'Untracked' is for ghost ships. 'Dropped' is for discarded ships.")
 
-    shipped_date = models.DateTimeField(auto_now_add=True)
+    shipped_date = models.DateTimeField(default=timezone.now, help_text="Please use the default time zone +0 (UTC). This is to ensure all ships are in the same timezone.")
     remarks = models.CharField(max_length=255, blank=True)
 
     updated_by = models.ForeignKey(User, null=True, blank=True, on_delete=models.SET_NULL, related_name='ships_updated')

@@ -3,6 +3,8 @@ from .models import Ship, Rule
 from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth.models import User
 from .admin_forms import ShipAdminForm
+from django.db import models
+from django import forms
 
 class CustomUserAdmin(UserAdmin):
     # Hide first_name and last_name in edit view
@@ -24,10 +26,22 @@ class CustomUserAdmin(UserAdmin):
 admin.site.unregister(User)
 admin.site.register(User, CustomUserAdmin)
 
+class CustomSplitDateTimeWidget(forms.SplitDateTimeWidget):
+    def __init__(self, attrs=None):
+        super().__init__(attrs=attrs)
+        self.widgets = [
+            forms.DateInput(attrs={'type': 'date'}),
+            forms.TimeInput(attrs={'type': 'time'}),
+        ]
+
 
 @admin.register(Ship)
 class ShipAdmin(admin.ModelAdmin):
     form = ShipAdminForm
+
+    formfield_overrides = {
+        models.DateTimeField: {'widget': CustomSplitDateTimeWidget()},
+    }
 
     list_display = ('ship_no', 'half', 'half_username', 'half_other', 'half_other_username', 'status', 'updated_by')
     list_editable = ('status',)
