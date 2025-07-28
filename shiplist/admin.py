@@ -6,6 +6,8 @@ from .admin_forms import ShipAdminForm
 from django.db import models
 from django import forms
 
+admin.site.site_header = 'Shiplist Administration'
+
 class CustomUserAdmin(UserAdmin):
     # Hide first_name and last_name in edit view
     list_display = ('username', 'is_active', 'is_staff')
