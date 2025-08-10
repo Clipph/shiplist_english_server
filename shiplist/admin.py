@@ -57,10 +57,12 @@ class ShipAdmin(admin.ModelAdmin):
         readonly_fields = list(super().get_readonly_fields(request, obj))
         restricted_fields = ["half", "half_username", "half_other", "half_other_username"]
 
-        if not request.user.has_perm("shiplist.can_edit_ship_entry"):
+        # Only make them readonly when EDITING, not when adding
+        if obj is not None and not request.user.has_perm("shiplist.can_edit_ship_entry"):
             readonly_fields.extend(restricted_fields)
 
         return readonly_fields
+
 
     # Security check to block tampering
     def save_model(self, request, obj, form, change):
