@@ -52,7 +52,23 @@ class ShipAdmin(admin.ModelAdmin):
     search_fields = ('half', 'half_other', 'remarks', 'ship_no', 'half_username', 'half_other_username')
     exclude = ('updated_by',)
 
+    # Dynamic read-only fields
+    def get_readonly_fields(self, request, obj=None):
+        readonly_fields = list(super().get_readonly_fields(request, obj))
+        restricted_fields = ["half", "half_username", "half_other", "half_other_username"]
+
+        if not request.user.has_perm("shiplist.can_edit_ship_entry"):
+            readonly_fields.extend(restricted_fields)
+
+        return readonly_fields
+
+    # Security check to block tampering
     def save_model(self, request, obj, form, change):
+        restricted_fields = {"half", "half_username", "half_other", "half_other_username"}
+        if not request.user.has_perm("shiplist.can_edit_ship_entry"):
+            if restricted_fields.intersection(form.changed_data):
+                self.message_user(request, "You don't have permission to edit those fields.", level="error")
+                return
         obj.updated_by = request.user
         super().save_model(request, obj, form, change)
 

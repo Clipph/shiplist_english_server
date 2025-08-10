@@ -30,6 +30,11 @@ class Ship(models.Model):
 
     updated_by = models.ForeignKey(User, null=True, blank=True, on_delete=models.SET_NULL, related_name='ships_updated')
 
+    class Meta:
+        permissions = [
+            ("can_edit_ship_entry", "Can edit ship entry fields"),
+        ]
+
     def __str__(self):
         return f"Ship no. {self.ship_no}"
     
