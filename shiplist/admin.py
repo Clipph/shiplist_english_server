@@ -67,10 +67,13 @@ class ShipAdmin(admin.ModelAdmin):
     # Security check to block tampering
     def save_model(self, request, obj, form, change):
         restricted_fields = {"half", "half_username", "half_other", "half_other_username"}
-        if not request.user.has_perm("shiplist.can_edit_ship_entry"):
+
+        # Skip restriction check if adding a new record
+        if change and not request.user.has_perm("shiplist.can_edit_ship_entry"):
             if restricted_fields.intersection(form.changed_data):
                 self.message_user(request, "You don't have permission to edit those fields.", level="error")
                 return
+
         obj.updated_by = request.user
         super().save_model(request, obj, form, change)
 
